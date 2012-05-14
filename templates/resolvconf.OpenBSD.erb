@@ -1,6 +1,0 @@
-# managed by puppet
-lookup file bind
-<% Puppet::Parser::Functions.function('hiera') -%>
-<% scope.function_hiera('resolvconf_nameservers',['8.8.8.8']).each do |nameserver| -%>
-nameserver <%= nameserver %> 
-<% end -%>

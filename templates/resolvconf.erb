@@ -1,8 +1,6 @@
-# managed by puppet
-<% Puppet::Parser::Functions.function('hiera') -%>
-domain <%= scope.function_hiera('resolvconf_domain',domain) %>
-search <%= scope.function_hiera('resolvconf_search',domain) %>
-
-<% scope.function_hiera('resolvconf_nameservers',['8.8.8.8']).each do |nameserver| -%>
-nameserver <%= nameserver %>
+# File managed by puppet
+<% if domainname != false %>domain <%= domainname %><%end -%>
+<% if !searchpath.empty? %>search <%= searchpath.join(" ") %>
+<% end -%>
+<% nameservers.each do |ns| %>nameserver <%= ns %>
 <% end -%>
