@@ -1,0 +1,52 @@
+Overview
+========
+
+This module manages the resolv.conf file.
+
+Example
+=======
+
+include resolvconf
+resolvconf::setup { "example":
+		domainname  => "mydomain",
+		searchpath  => ['mydomain', 'test.mydomain'],
+		nameservers => ['192.168.1.100', '192.168.1.101', '192.168.1.102'],
+}
+
+
+Variables
+=========
+
+
+Classes
+=======
+
+resolvconf
+----------
+
+An empty class
+
+
+Defines
+=======
+
+resolvconf::setup
+-----------------
+
+Setup the resolv.conf file
+
+Parameters:
+	$domainname: The default domain
+	$searchpath: Array of domains to search
+	$nameservers: List of nameservers to search
+
+Licensing
+=========
+
+This puppet module is licensed under the GPL version 3 or later. Redistribution
+and modification is encouraged.
+
+The GPL version 3 license text can be found in the "LICENSE" file accompanying
+this puppet module, or at the following URL:
+
+http://www.gnu.org/licenses/gpl-3.0.html
