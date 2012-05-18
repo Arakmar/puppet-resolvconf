@@ -8,12 +8,25 @@
 # See LICENSE for the full license granted to you.
 
 class resolvconf {
-	define setup($domainname = false, $searchpath, $nameservers) {
-		file { "/etc/resolv.conf":
-			owner   => root,
-			group   => root,
-			mode    => 644,
-			content => template("resolvconf/resolvconf.erb"),
-		}
+	$domainname = $domainname ? {
+		"" => false,
+		default => $domainname
+	}
+	
+	$searchpath = $searchpath ? {
+		"" => [],
+		default => $searchpath
+	}
+	
+	$nameservers = $nameservers ? {
+		"" => [],
+		default => $nameservers
+	}
+		
+	file { "/etc/resolv.conf":
+		owner   => root,
+		group   => root,
+		mode    => 644,
+		content => template("resolvconf/resolvconf.erb"),
 	}
 }
