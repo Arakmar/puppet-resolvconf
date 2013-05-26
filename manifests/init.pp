@@ -7,22 +7,11 @@
 #
 # See LICENSE for the full license granted to you.
 
-class resolvconf {
-	$domainname = $domainname ? {
-		"" => false,
-		default => $domainname
-	}
-	
-	$searchpath = $searchpath ? {
-		"" => [],
-		default => $searchpath
-	}
-	
-	$nameservers = $nameservers ? {
-		"" => [],
-		default => $nameservers
-	}
-		
+class resolvconf(
+        $domainname = false,
+        $searchpath = [],
+        $nameservers = []
+) {
 	file { "/etc/resolv.conf":
 		owner   => root,
 		group   => root,
