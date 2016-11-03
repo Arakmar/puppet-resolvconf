@@ -15,7 +15,7 @@ class resolvconf(
 	file { "/etc/resolv.conf":
 		owner   => root,
 		group   => root,
-		mode    => 644,
+		mode    => '644',
 		content => template("resolvconf/resolvconf.erb"),
 	}
 }
